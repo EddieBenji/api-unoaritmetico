@@ -3,7 +3,8 @@ class CreateGames < ActiveRecord::Migration
     create_table :games do |t|
       t.date :date_game
       t.string :device_id
-      t.references :play, index: true, foreign_key: true
+
+      t.timestamps null: false
     end
   end
 end

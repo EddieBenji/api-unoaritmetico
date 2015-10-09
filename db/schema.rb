@@ -11,24 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151009041729) do
+ActiveRecord::Schema.define(version: 20151009170959) do
 
   create_table "games", force: :cascade do |t|
-    t.date    "date_game"
-    t.string  "device_id", limit: 255
-    t.integer "play_id",   limit: 4
+    t.date     "date_game"
+    t.string   "device_id",  limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
-
-  add_index "games", ["play_id"], name: "index_games_on_play_id", using: :btree
 
   create_table "plays", force: :cascade do |t|
-    t.string "turn",      limit: 255
-    t.string "player",    limit: 255
-    t.string "color",     limit: 255
-    t.string "op_deck",   limit: 255
-    t.string "op_player", limit: 255
-    t.string "value",     limit: 255
+    t.integer  "game_id",    limit: 4
+    t.string   "turn",       limit: 255
+    t.string   "player",     limit: 255
+    t.string   "color",      limit: 255
+    t.string   "op_deck",    limit: 255
+    t.string   "op_player",  limit: 255
+    t.string   "value",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  add_foreign_key "games", "plays"
+  add_index "plays", ["game_id"], name: "index_plays_on_game_id", using: :btree
+
+  add_foreign_key "plays", "games"
 end

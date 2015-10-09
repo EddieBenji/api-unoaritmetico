@@ -12,7 +12,6 @@
 !/log/.keep
 /tmp
 ### Ruby template
-*.gem
 *.rbc
 /.config
 /coverage/
@@ -22,8 +21,6 @@
 /spec/examples.txt
 /test/tmp/
 /test/version_tmp/
-/tmp/
-
 ## Specific to RubyMotion:
 .dat*
 .repl_history
@@ -36,7 +33,6 @@ build/
 /rdoc/
 
 ## Environment normalisation:
-/.bundle/
 /vendor/bundle
 /lib/bundler/man/
 
@@ -50,8 +46,6 @@ build/
 .rvmrc
 ### JetBrains template
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio
-
-*.iml
 
 ## Directory-based project format:
 .idea/

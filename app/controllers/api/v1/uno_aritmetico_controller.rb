@@ -17,15 +17,11 @@ class Api::V1::UnoAritmeticoController < ApplicationController
     # puts "ID del dispositivo " + device_id
 
 
-    # Obtenemos la primera jugada para crear la primer partida
-    first_play = data[0]
-    @this_game = Game.new
-    @this_game.date_game = first_play['fecha']
-    @this_game.device_id = device_id
-    @this_game.save!
+    # Creamos la primera partida
+    @this_game = nil
 
     # Current game es el id de la partida
-    current_game = 1
+    current_game = 0
 
     data.each do |play|
 
@@ -89,6 +85,7 @@ class Api::V1::UnoAritmeticoController < ApplicationController
         @this_game.device_id = device_id
         @this_game.save!
         current_game+=1
+        redo
       end
 
     end

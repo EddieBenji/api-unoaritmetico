@@ -5,8 +5,8 @@ class CreatePlays < ActiveRecord::Migration
       t.integer :turn
       t.references :player, index: true, foreign_key: true
       t.boolean :color
-      t.integer :op_deck
-      t.integer :op_player
+      t.references :op_deck, references: :operations
+      t.references :op_player, references: :operations
       t.integer :value
       t.integer :time_taken
 

@@ -29,16 +29,16 @@ ActiveRecord::Schema.define(version: 20151014131646) do
   end
 
   create_table "plays", force: :cascade do |t|
-    t.integer  "game_id",    limit: 4
-    t.integer  "turn",       limit: 4
-    t.integer  "player_id",  limit: 4
-    t.boolean  "color",      limit: 1
-    t.integer  "op_deck",    limit: 4
-    t.integer  "op_player",  limit: 4
-    t.integer  "value",      limit: 4
-    t.integer  "time_taken", limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "game_id",      limit: 4
+    t.integer  "turn",         limit: 4
+    t.integer  "player_id",    limit: 4
+    t.boolean  "color",        limit: 1
+    t.integer  "op_deck_id",   limit: 4
+    t.integer  "op_player_id", limit: 4
+    t.integer  "value",        limit: 4
+    t.integer  "time_taken",   limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "plays", ["game_id"], name: "index_plays_on_game_id", using: :btree

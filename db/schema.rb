@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151009170959) do
+ActiveRecord::Schema.define(version: 20151014131646) do
 
   create_table "games", force: :cascade do |t|
     t.date     "date_game"
@@ -20,19 +20,30 @@ ActiveRecord::Schema.define(version: 20151009170959) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "operations", force: :cascade do |t|
+    t.string "name", limit: 255
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.string "name", limit: 255
+  end
+
   create_table "plays", force: :cascade do |t|
     t.integer  "game_id",    limit: 4
-    t.string   "turn",       limit: 255
-    t.string   "player",     limit: 255
-    t.string   "color",      limit: 255
-    t.string   "op_deck",    limit: 255
-    t.string   "op_player",  limit: 255
-    t.string   "value",      limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "turn",       limit: 4
+    t.integer  "player_id",  limit: 4
+    t.boolean  "color",      limit: 1
+    t.integer  "op_deck",    limit: 4
+    t.integer  "op_player",  limit: 4
+    t.integer  "value",      limit: 4
+    t.integer  "time_taken", limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   add_index "plays", ["game_id"], name: "index_plays_on_game_id", using: :btree
+  add_index "plays", ["player_id"], name: "index_plays_on_player_id", using: :btree
 
   add_foreign_key "plays", "games"
+  add_foreign_key "plays", "players"
 end

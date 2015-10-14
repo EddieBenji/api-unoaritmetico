@@ -42,8 +42,12 @@ ActiveRecord::Schema.define(version: 20151014131646) do
   end
 
   add_index "plays", ["game_id"], name: "index_plays_on_game_id", using: :btree
+  add_index "plays", ["op_deck_id"], name: "index_plays_on_op_deck_id", using: :btree
+  add_index "plays", ["op_player_id"], name: "index_plays_on_op_player_id", using: :btree
   add_index "plays", ["player_id"], name: "index_plays_on_player_id", using: :btree
 
   add_foreign_key "plays", "games"
+  add_foreign_key "plays", "operations", column: "op_deck_id"
+  add_foreign_key "plays", "operations", column: "op_player_id"
   add_foreign_key "plays", "players"
 end

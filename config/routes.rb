@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      post 'unoartimetico/importdb'
+      post 'unoaritmetico/importdb'
     end
   end
 end

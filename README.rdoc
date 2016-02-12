@@ -1,28 +1,25 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Los pasos que necesitas cubrir para lograr correr el servicio web son:
 
-Things you may want to cover:
+*   Si es la primera vez que descargas el proyecto:
+        -Descarga la gemas: bundle install
+        -Corre las migraciones: rake db:migrate
+        -Corre los seeds: rake db:seed
 
-* Ruby version
+*   Si ya tenías el proyecto:
+        -Borra la base de datos: rake db:drop
+        -Créala de nuevo: rake db:create
+        -Corre las migraciones de nuevo: rake db:migrate:redo
+        -Corre los seeds: rake db:seed
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+*   Para integrar el servicio web con la aplicación en android,
+    es necesario que desde la aplicación móvil hagas un request
+    tipo POST a la siguiente ruta:
+        -http://<IP>:<PUERTO>/api/v1/uno_aritmetico/import_games
+        -Con un JSON que tenga la información del:
+            -Número de juego.
+            -Jugador que hace la jugada.
+            -Tipo de jugada (Si la jugada fue por color o por una operación en el mazo)
+            -Operación (Suma, resta, multiplicación, división).
+            -ID del dispositivo android.

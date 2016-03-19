@@ -32,18 +32,7 @@ class Api::V1::UnoAritmeticoController < ApplicationController
         this_play.turn = play['turno'].to_i
 
         # Obtenemos que jugador tiro
-        case play['jugador']
-          when 'Player 1'
-            this_play.player_id = Player::PLAYER_1
-          when 'Player 2'
-            this_play.player_id = Player::PLAYER_2
-          when 'Player 3'
-            this_play.player_id = Player::PLAYER_3
-          when 'Player 4'
-            this_play.player_id = Player::PLAYER_4
-          when 'Maquina'
-            this_play.player_id = Player::MACHINE
-        end
+        this_play.player = play['jugador']
 
         # Obtenemos si tiro color
         this_play.color = play['color']=='si' ? true : false
@@ -92,7 +81,7 @@ class Api::V1::UnoAritmeticoController < ApplicationController
 
     # Respondemos que se exporto
     respond_to do |format|
-      format.html { render plain: "BD exportada" }
+      format.html { render plain: 'BD exportada' }
     end
   end
 end
